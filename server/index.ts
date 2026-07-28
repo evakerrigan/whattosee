@@ -1,6 +1,7 @@
-import app from './app';
+import 'dotenv/config';
+import { app } from './app.js';
 
-// Локальный запуск dev-сервера API (не используется на Vercel).
+// Локальный запуск dev-сервера API (на Vercel используется api/index.ts).
 const port = Number(process.env.PORT ?? 3000);
 
 app.listen(port, '127.0.0.1', () => {

@@ -1,14 +1,14 @@
 import express, { type ErrorRequestHandler } from 'express';
 import cors from 'cors';
 import { ZodError } from 'zod';
-import moviesRouter from './routes/movies';
-import genresRouter from './routes/genres';
-import countriesRouter from './routes/countries';
-import healingsRouter from './routes/healings';
+import moviesRouter from './routes/movies.js';
+import genresRouter from './routes/genres.js';
+import countriesRouter from './routes/countries.js';
+import healingsRouter from './routes/healings.js';
 
-// Express-приложение. Экспортируется без вызова listen(), чтобы его можно было
-// переиспользовать: локально — через server/index.ts, на Vercel — через api/index.ts.
-const app = express();
+// Собираем Express-приложение (без запуска сервера), чтобы один и тот же app
+// использовался и локально (server/index.ts), и на Vercel (api/index.ts).
+export const app = express();
 
 app.use(cors());
 app.use(express.json());

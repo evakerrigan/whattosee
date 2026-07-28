@@ -1,6 +1,14 @@
-import { PrismaClient } from '@prisma/client';
+import 'dotenv/config';
+import { PrismaNeon } from '@prisma/adapter-neon';
+import { PrismaClient } from '../server/generated/prisma/client.js';
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+  throw new Error('DATABASE_URL не задан (см. .env)');
+}
+const prisma = new PrismaClient({
+  adapter: new PrismaNeon({ connectionString }),
+});
 
 // --- Справочники ---------------------------------------------------------
 

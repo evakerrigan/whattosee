@@ -16,6 +16,9 @@ coverage
 .env.local
 *.local
 
+# Сгенерированный клиент Prisma (создаётся `prisma generate` / postinstall)
+/server/generated
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

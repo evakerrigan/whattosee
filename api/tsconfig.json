@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
+    "lib": ["ES2022"],
+    "types": ["node"],
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "types": ["node"]
+    "resolveJsonModule": true
   },
-  "include": ["server", "api", "prisma"]
+  "include": ["**/*.ts", "../server/**/*.ts"]
 }
