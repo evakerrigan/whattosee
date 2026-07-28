@@ -81,6 +81,20 @@ export default tseslint.config([
     },
   },
 
+  // ---------------------------------------------------------------------------
+  // Backend (Express + Prisma). Работает в Node, а не в браузере: нужны
+  // node-глобалы, и React-правила Fast Refresh здесь неприменимы.
+  // ---------------------------------------------------------------------------
+  {
+    files: ['server/**/*.ts', 'api/**/*.ts', 'prisma/**/*.ts'],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+
   // Feature layers must not import from the `app` layer.
   // To also forbid cross-feature imports (compose features only in the app
   // layer), uncomment the second pattern once you have features.

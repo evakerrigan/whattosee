@@ -1,0 +1,16 @@
+// Prisma schema — Neon (serverless Postgres).
+// Модели данных добавляются в фазе 2.
+
+generator client {
+  provider = "prisma-client-js"
+  // native — для локальной разработки; rhel-openssl — для serverless-функций Vercel (AWS Lambda).
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Пул-соединение Neon (PgBouncer) — используется в рантайме.
+  url       = env("DATABASE_URL")
+  // Прямое соединение — используется миграциями (`prisma migrate`).
+  directUrl = env("DIRECT_URL")
+}

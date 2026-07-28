@@ -13,5 +13,5 @@ const getEnvVar = (key: string, fallback?: string): string => {
 };
 
 export const env = {
-  API_URL: getEnvVar('VITE_API_URL', 'https://your-api-url.com/'),
+  API_URL: getEnvVar('VITE_API_URL', '/api'),
 } as const;
