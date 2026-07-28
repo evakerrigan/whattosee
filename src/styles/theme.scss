@@ -1,0 +1,41 @@
+// Цветовые токены темы. Тёмная — по умолчанию, светлая — по data-theme="light".
+// Переключается атрибутом data-theme на <html> (см. ThemeProvider и скрипт в index.html).
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0d0d0f;
+  --color-surface: #17171b;
+  --color-surface-2: #202027;
+  --color-text: #ececf1;
+  --color-text-muted: #9a9aa5;
+  --color-border: #2a2a31;
+
+  --color-accent: #e5b567; // тёплое золото — «особенное кино»
+  --color-accent-hover: #f0c987;
+  --color-accent-contrast: #12120f;
+
+  --color-imdb: #f5c518;
+
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #f5f5f4;
+  --color-surface: #ffffff;
+  --color-surface-2: #eeeeec;
+  --color-text: #1a1a1e;
+  --color-text-muted: #63636e;
+  --color-border: #e3e3e0;
+
+  --color-accent: #b07a1e;
+  --color-accent-hover: #8f6115;
+  --color-accent-contrast: #ffffff;
+
+  --color-imdb: #c99a06;
+
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
