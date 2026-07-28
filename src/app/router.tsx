@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from '@/components/layouts/app-layout';
+import { HomeRoute } from './routes/home';
 import { MoviesRoute } from './routes/movies';
 import { MovieRoute } from './routes/movie';
 import { HealingRoute } from './routes/healing';
@@ -11,8 +12,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <AppLayout />,
     children: [
-      // Временно главная = каталог; отдельная главная появится в фазе 7.
-      { index: true, element: <MoviesRoute /> },
+      { index: true, element: <HomeRoute /> },
       { path: 'movies', element: <MoviesRoute /> },
       { path: 'movies/:id', element: <MovieRoute /> },
       { path: 'healing', element: <HealingRoute /> },

@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp($spacing-xl, 10vw, 96px) 0;
+
+  &__kicker {
+    margin-bottom: $spacing-md;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: $font-size-mini;
+    color: var(--color-accent);
+  }
+
+  &__title {
+    margin-bottom: $spacing-md;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.05;
+  }
+
+  &__lead {
+    margin-bottom: $spacing-lg;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-md;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btnPrimary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
+}
+
+.btnGhost {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.section {
+  margin-top: $spacing-xl;
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      margin: 0;
+    }
+  }
+}
+
+.more {
+  color: var(--color-text-muted);
+  font-size: $font-size-mini;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+}
+
+.healingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $spacing-lg;
+}
