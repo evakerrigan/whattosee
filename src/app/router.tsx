@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { AppLayout } from '@/app/layouts';
-import { NotFoundPage } from '@/pages/NotFoundPage';
+import { AppLayout } from '@/components/layouts/app-layout';
+import { NotFoundRoute } from './routes/not-found';
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '*',
-        element: <NotFoundPage />,
+        element: <NotFoundRoute />,
       },
     ],
   },

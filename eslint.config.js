@@ -40,4 +40,70 @@ export default tseslint.config([
       globals: globals.browser,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // Bulletproof-react: unidirectional architecture boundaries.
+  // Allowed import flow:  shared layers  ->  features  ->  app
+  // (Mirrors bulletproof-react's `import/no-restricted-paths`; implemented with
+  //  the built-in `no-restricted-imports` rule to stay compatible with the flat
+  //  config and ESLint 10, which `eslint-plugin-import` does not yet support.)
+  // ---------------------------------------------------------------------------
+
+  // Shared layers must not import from the `features` or `app` layers.
+  {
+    files: [
+      'src/components/**',
+      'src/hooks/**',
+      'src/lib/**',
+      'src/stores/**',
+      'src/types/**',
+      'src/utils/**',
+      'src/config/**',
+    ],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@/features', '@/features/**'],
+              message:
+                'Shared modules must not import from features (unidirectional architecture: shared -> features -> app).',
+            },
+            {
+              group: ['@/app', '@/app/**'],
+              message:
+                'Shared modules must not import from app (unidirectional architecture: shared -> features -> app).',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  // Feature layers must not import from the `app` layer.
+  // To also forbid cross-feature imports (compose features only in the app
+  // layer), uncomment the second pattern once you have features.
+  {
+    files: ['src/features/**'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@/app', '@/app/**'],
+              message:
+                'Features must not import from app (unidirectional architecture: shared -> features -> app).',
+            },
+            // {
+            //   group: ['@/features/*/**'],
+            //   message:
+            //     'Do not import across features; compose them in the app layer and use relative imports within a feature.',
+            // },
+          ],
+        },
+      ],
+    },
+  },
 ]);
