@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--color-accent);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.count {
+  margin-top: auto;
+  font-size: $font-size-mini;
+  color: var(--color-text-muted);
+}

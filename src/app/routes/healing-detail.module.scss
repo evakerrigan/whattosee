@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+
+.back {
+  display: inline-block;
+  margin-bottom: $spacing-lg;
+  color: var(--color-text-muted);
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+}
+
+.head {
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    margin-bottom: $spacing-xs;
+    color: var(--color-accent);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+}
+
+.status {
+  padding: $spacing-xl 0;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.head {
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $spacing-lg;
+}
+
+.status {
+  padding: $spacing-xl 0;
+  color: var(--color-text-muted);
+}
