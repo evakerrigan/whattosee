@@ -92,6 +92,11 @@ export default tseslint.config([
     },
     rules: {
       'react-refresh/only-export-components': 'off',
+      // Разрешаем неиспользуемые аргументы с префиксом _ (напр. _next в error-handler Express).
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
     },
   },
 

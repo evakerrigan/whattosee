@@ -1,5 +1,4 @@
 // Prisma schema — Neon (serverless Postgres).
-// Модели данных добавляются в фазе 2.
 
 generator client {
   provider = "prisma-client-js"
@@ -13,4 +12,57 @@ datasource db {
   url       = env("DATABASE_URL")
   // Прямое соединение — используется миграциями (`prisma migrate`).
   directUrl = env("DIRECT_URL")
+}
+
+/// Фильм — карточка подборки.
+model Movie {
+  id            String  @id @default(cuid())
+  title         String
+  originalTitle String?
+  year          Int?
+  posterUrl     String?
+
+  imdbRating        Float?
+  otherRating       Float?
+  otherRatingSource String? // напр. "Кинопоиск", "Letterboxd"
+
+  description String // описание фильма
+  review      String // моя рецензия
+
+  // Страна производства (для v1 — одна; совместные постановки упростим).
+  country   Country? @relation(fields: [countryId], references: [id])
+  countryId String?
+
+  genres   Genre[]   @relation("MovieGenres")
+  healings Healing[] @relation("MovieHealings")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([countryId])
+}
+
+/// Жанр (фантастика, мелодрама, артхаус, …). Many-to-many с Movie.
+model Genre {
+  id     String  @id @default(cuid())
+  slug   String  @unique
+  name   String
+  movies Movie[] @relation("MovieGenres")
+}
+
+/// Страна фильма (Корея, Швеция, США, …).
+model Country {
+  id     String  @id @default(cuid())
+  slug   String  @unique
+  name   String
+  movies Movie[]
+}
+
+/// «Лечебная» категория: фильм лечит что-то (отношения с мамой, мотивацию, …).
+model Healing {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  title       String // «Лечит отношения с мамой»
+  description String?
+  movies      Movie[] @relation("MovieHealings")
 }
